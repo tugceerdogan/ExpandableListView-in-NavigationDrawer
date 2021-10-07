@@ -1,4 +1,4 @@
-package com.example.expandablelistviewnavigationdrawer.ui.home
+package com.example.expandablelistviewnavigationdrawer.ui.header2
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.expandablelistviewnavigationdrawer.R
 import com.example.expandablelistviewnavigationdrawer.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class H2SecondChildFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null

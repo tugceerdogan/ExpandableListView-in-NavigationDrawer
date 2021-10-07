@@ -68,24 +68,15 @@ class ExpandedMenuAdapter(
             convertView = infalInflater.inflate(R.layout.list_header, null)
         }
 
-        val lblListHeader = convertView!!.findViewById(R.id.submenu) as TextView
+        val lblListHeader = convertView!!.findViewById(R.id.header_title) as TextView
         val headerIcon = convertView!!.findViewById(R.id.iconimage) as ImageView
         //  Expandable View, Indicator right
-        val headerIndicator = convertView.findViewById(R.id.indicatorImage) as ImageView
+
         lblListHeader.setTypeface(null, Typeface.NORMAL)
         lblListHeader.text = headerTitle.iconName
         headerIcon.setImageResource(headerTitle.iconImg)
         // Expandable View, Indicator status
-        if (getChildrenCount(groupPosition) == 0) {
-            headerIndicator.visibility = View.GONE
-        } else {
-            headerIndicator.visibility = View.VISIBLE
-            if (isExpanded) {
-                headerIndicator.setBackgroundResource((R.drawable.ic_launcher_background))
-            } else {
-                headerIndicator.setBackgroundResource((R.drawable.ic_launcher_foreground))
-            }
-        }
+
         return convertView
     }
 
@@ -106,7 +97,7 @@ class ExpandedMenuAdapter(
         }
 
         val txtListChild = convertView!!
-            .findViewById(R.id.submenu) as TextView
+            .findViewById(R.id.child_title) as TextView
 
         txtListChild.text = childText
 
