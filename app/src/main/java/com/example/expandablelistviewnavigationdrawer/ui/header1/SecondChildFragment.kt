@@ -1,13 +1,13 @@
-package com.example.expandablelistviewnavigationdrawer.ui.header2
+package com.example.expandablelistviewnavigationdrawer.ui.header1
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.expandablelistviewnavigationdrawer.R
 
-class H2FirstChildFragment : Fragment() {
+class SecondChildFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class H2FirstChildFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_h2_first_child, container, false)
+        return inflater.inflate(R.layout.fragment_second_child, container, false)
     }
 
 }

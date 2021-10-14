@@ -36,10 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        binding.appBarMain.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -49,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_h1FirstChild, R.id.nav_h1SecondChild,
-                R.id.nav_h2FirstChild, R.id.nav_h2SecondChild,R.id.nav_h2ThirdChild
+                R.id.nav_firstChild, R.id.nav_secondChild,
+                R.id.nav_thirdChild, R.id.nav_fourthChild,R.id.nav_fifthChild
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -78,8 +74,8 @@ class MainActivity : AppCompatActivity() {
                         parent.setOnChildClickListener { parent, _, groupPosition, childPosition, _ ->
                             drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
-                                0 -> navController.navigate(R.id.nav_h1FirstChild)
-                                1 -> navController.navigate(R.id.nav_h1SecondChild)
+                                0 -> navController.navigate(R.id.nav_firstChild)
+                                1 -> navController.navigate(R.id.nav_secondChild)
                             }
                             // Collapse the expanded list
                             parent.collapseGroup(groupPosition)
@@ -94,9 +90,9 @@ class MainActivity : AppCompatActivity() {
                         parent.setOnChildClickListener { parent, _, groupPosition, childPosition, _ ->
                             drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
-                                0 -> navController.navigate(R.id.nav_h2FirstChild)
-                                1 -> navController.navigate(R.id.nav_h2SecondChild)
-                                2 -> navController.navigate(R.id.nav_h2ThirdChild)
+                                0 -> navController.navigate(R.id.nav_thirdChild)
+                                1 -> navController.navigate(R.id.nav_fourthChild)
+                                2 -> navController.navigate(R.id.nav_fifthChild)
 
                             }
                             parent.collapseGroup(groupPosition)
@@ -138,9 +134,9 @@ class MainActivity : AppCompatActivity() {
         childFirst.add("Child2")
 
         val childSecond = ArrayList<String>()
-        childSecond.add("Child1")
-        childSecond.add("Child2")
         childSecond.add("Child3")
+        childSecond.add("Child4")
+        childSecond.add("Child5")
 
         // This case, only 2 of Big title have sub title
         childList[headerList[0]] = childFirst

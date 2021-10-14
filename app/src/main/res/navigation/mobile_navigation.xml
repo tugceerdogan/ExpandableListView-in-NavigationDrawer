@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_h1FirstChild">
+    app:startDestination="@id/nav_firstChild">
 
     <fragment
-        android:id="@+id/nav_h1FirstChild"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.header1.H1FirstChildFragment"
-        tools:layout="@layout/fragment_h1_first_child" />
+        android:id="@+id/nav_firstChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header1.FirstChildFragment"
+        tools:layout="@layout/fragment_first_child" />
     <fragment
-        android:id="@+id/nav_h1SecondChild"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.header1.H1SecondChildFragment"
-        tools:layout="@layout/fragment_h1_second_child" />
+        android:id="@+id/nav_secondChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header1.SecondChildFragment"
+        tools:layout="@layout/fragment_second_child" />
     <fragment
-        android:id="@+id/nav_h2FirstChild"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2FirstChildFragment"
-        tools:layout="@layout/fragment_h2_first_child" />
+        android:id="@+id/nav_thirdChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.ThirdChildFragment"
+        tools:layout="@layout/fragment_third_child" />
 
     <fragment
-        android:id="@+id/nav_h2SecondChild"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2SecondChildFragment"
-        tools:layout="@layout/fragment_h2_second_child" />
+        android:id="@+id/nav_fourthChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.FourthChildFragment"
+        tools:layout="@layout/fragment_fourth_child" />
 
     <fragment
-        android:id="@+id/nav_h2ThirdChild"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2ThirdChildFragment"
-        tools:layout="@layout/fragment_h2_third_child" />
+        android:id="@+id/nav_fifthChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.FifthChildFragment"
+        tools:layout="@layout/fragment_fifth_child" />
 
 </navigation>
