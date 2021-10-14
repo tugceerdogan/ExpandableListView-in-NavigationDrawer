@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/nav_h1FirstChild">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2SecondChildFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/nav_h1FirstChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header1.H1FirstChildFragment"
+        tools:layout="@layout/fragment_h1_first_child" />
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_h1SecondChild"
         android:name="com.example.expandablelistviewnavigationdrawer.ui.header1.H1SecondChildFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_h1_second_child" />
+    <fragment
+        android:id="@+id/nav_h2FirstChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2FirstChildFragment"
+        tools:layout="@layout/fragment_h2_first_child" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.expandablelistviewnavigationdrawer.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_h2SecondChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2SecondChildFragment"
+        tools:layout="@layout/fragment_h2_second_child" />
+
+    <fragment
+        android:id="@+id/nav_h2ThirdChild"
+        android:name="com.example.expandablelistviewnavigationdrawer.ui.header2.H2ThirdChildFragment"
+        tools:layout="@layout/fragment_h2_third_child" />
+
 </navigation>

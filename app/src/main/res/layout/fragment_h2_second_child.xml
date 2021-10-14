@@ -5,10 +5,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="H1_FIRST"
+        android:text="H2_SECOND"
         android:textSize="25sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"

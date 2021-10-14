@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -48,13 +49,13 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_h1FirstChild, R.id.nav_h1SecondChild,
+                R.id.nav_h2FirstChild, R.id.nav_h2SecondChild,R.id.nav_h2ThirdChild
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // Add content in drawer
         prepareListData()
 
         //Initialize and Assign ExpandableListView
@@ -68,23 +69,17 @@ class MainActivity : AppCompatActivity() {
 
         expandableListView.setOnGroupClickListener { parent, _, groupPosition, _ ->
             when (groupPosition) {
-                // Position, first title = 0, second title = 1, .......
 
-                0 -> { //Example - How to expand the drawer list
+                0 -> {
                     if (parent.isGroupExpanded(groupPosition)) {
                         parent.collapseGroup(groupPosition)
                     } else {
                         parent.expandGroup(groupPosition)
                         parent.setOnChildClickListener { parent, _, groupPosition, childPosition, _ ->
+                            drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
-                                0 -> {
-                                    // Do anything you wanted
-
-                                }
-                                1 -> {
-                                    // Do anything you wanted
-
-                                }
+                                0 -> navController.navigate(R.id.nav_h1FirstChild)
+                                1 -> navController.navigate(R.id.nav_h1SecondChild)
                             }
                             // Collapse the expanded list
                             parent.collapseGroup(groupPosition)
@@ -97,22 +92,12 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         parent.expandGroup(groupPosition)
                         parent.setOnChildClickListener { parent, _, groupPosition, childPosition, _ ->
+                            drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
-                                0 -> {
-                                    // Do anything you wanted
+                                0 -> navController.navigate(R.id.nav_h2FirstChild)
+                                1 -> navController.navigate(R.id.nav_h2SecondChild)
+                                2 -> navController.navigate(R.id.nav_h2ThirdChild)
 
-
-                                }
-                                1 -> {
-                                    // Do anything you wanted
-
-
-                                }
-                                2 -> {
-                                    // Do anything you wanted
-
-
-                                }
                             }
                             parent.collapseGroup(groupPosition)
                         }
@@ -124,7 +109,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
