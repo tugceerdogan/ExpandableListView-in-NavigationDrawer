@@ -15,7 +15,6 @@ import com.example.expandablelistviewnavigationdrawer.databinding.ActivityMainBi
 import com.example.expandablelistviewnavigationdrawer.ui.expanded.ExpandedMenuAdapter
 import com.example.expandablelistviewnavigationdrawer.ui.expanded.ExpandedMenuModel
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 
@@ -117,14 +116,14 @@ class MainActivity : AppCompatActivity() {
     private fun prepareListData() {
 
         val headerFirst = ExpandedMenuModel()
-        headerFirst.iconName = ("Header1")
-        headerFirst.iconImg = R.drawable.ic_menu_camera
+        headerFirst.itemName = ("Header1")
+        headerFirst.itemIcon = R.drawable.ic_menu_camera
 
         headerList.add(headerFirst)
 
         val headerSecond = ExpandedMenuModel()
-        headerSecond.iconName = ("Header2")
-        headerSecond.iconImg = R.drawable.ic_menu_camera
+        headerSecond.itemName = ("Header2")
+        headerSecond.itemIcon = R.drawable.ic_menu_camera
 
         headerList.add(headerSecond)
 

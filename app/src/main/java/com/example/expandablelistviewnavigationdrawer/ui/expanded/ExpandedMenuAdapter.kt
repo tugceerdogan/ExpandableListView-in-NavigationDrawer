@@ -2,7 +2,6 @@ package com.example.expandablelistviewnavigationdrawer.ui.expanded
 
 import android.content.Context
 import android.graphics.Typeface
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,32 +13,29 @@ import com.example.expandablelistviewnavigationdrawer.R
 
 class ExpandedMenuAdapter(
     private val mContext: Context,
-    private val mListDataHeader: ArrayList<ExpandedMenuModel>,
-    private val mListDataChild: HashMap<ExpandedMenuModel, ArrayList<String>>,
-    private val expandableListView: ExpandableListView
+    private val mListHeader: ArrayList<ExpandedMenuModel>,
+    private val mListChild: HashMap<ExpandedMenuModel, ArrayList<String>>,
+    private val mExpandableListView: ExpandableListView
 ) : BaseExpandableListAdapter() {
 
     override fun getGroupCount(): Int {
-        val i = mListDataHeader.size
-        Log.d("GROUPCOUNT", i.toString())
-        return this.mListDataHeader.size
+        return this.mListHeader.size
     }
 
     override fun getChildrenCount(groupPosition: Int): Int {
         var childCount = 0
         if (groupPosition == 0 || groupPosition == 1) {
-            childCount = this.mListDataChild[this.mListDataHeader[groupPosition]]!!.size
+            childCount = this.mListChild[this.mListHeader[groupPosition]]!!.size
         }
         return childCount
     }
 
     override fun getGroup(groupPosition: Int): Any {
-        return this.mListDataHeader[groupPosition]
+        return this.mListHeader[groupPosition]
     }
 
     override fun getChild(groupPosition: Int, childPosition: Int): Any {
-        Log.d("CHILD", mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition))
-        return mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition)
+        return mListChild[this.mListHeader[groupPosition]]!!.get(childPosition)
     }
 
     override fun getGroupId(groupPosition: Int): Long {
@@ -61,21 +57,19 @@ class ExpandedMenuAdapter(
         parent: ViewGroup
     ): View {
         var convertView = convertView
-        val headerTitle = getGroup(groupPosition) as ExpandedMenuModel
+        val header = getGroup(groupPosition) as ExpandedMenuModel
         if (convertView == null) {
-            val infalInflater = mContext
+            val inflater = mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = infalInflater.inflate(R.layout.list_header, null)
+            convertView = inflater.inflate(R.layout.list_header, null)
         }
 
-        val lblListHeader = convertView!!.findViewById(R.id.header_title) as TextView
-        val headerIcon = convertView!!.findViewById(R.id.iconimage) as ImageView
-        //  Expandable View, Indicator right
+        val headerName = convertView!!.findViewById(R.id.header_title) as TextView
+        val headerIcon = convertView!!.findViewById(R.id.header_icon) as ImageView
 
-        lblListHeader.setTypeface(null, Typeface.NORMAL)
-        lblListHeader.text = headerTitle.iconName
-        headerIcon.setImageResource(headerTitle.iconImg)
-        // Expandable View, Indicator status
+        headerName.setTypeface(null, Typeface.NORMAL)
+        headerName.text = header.itemName
+        headerIcon.setImageResource(header.itemIcon)
 
         return convertView
     }
@@ -91,15 +85,15 @@ class ExpandedMenuAdapter(
         val childText = getChild(groupPosition, childPosition) as String
 
         if (convertView == null) {
-            val infalInflater = this.mContext
+            val inflater = this.mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            convertView = infalInflater.inflate(R.layout.list_child, null)
+            convertView = inflater.inflate(R.layout.list_child, null)
         }
 
-        val txtListChild = convertView!!
+        val childName = convertView!!
             .findViewById(R.id.child_title) as TextView
 
-        txtListChild.text = childText
+        childName.text = childText
 
         return convertView
     }
