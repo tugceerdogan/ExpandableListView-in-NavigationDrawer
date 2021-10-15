@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
 
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_firstChild, R.id.nav_secondChild,
@@ -127,7 +125,6 @@ class MainActivity : AppCompatActivity() {
 
         headerList.add(headerSecond)
 
-        // Second,  Adding child data (Subtitle)
         val childFirst = ArrayList<String>()
         childFirst.add("Child1")
         childFirst.add("Child2")
@@ -137,7 +134,6 @@ class MainActivity : AppCompatActivity() {
         childSecond.add("Child4")
         childSecond.add("Child5")
 
-        // This case, only 2 of Big title have sub title
         childList[headerList[0]] = childFirst
         childList[headerList[1]] = childSecond
     }

@@ -46,9 +46,7 @@ class ExpandedMenuAdapter(
         return childPosition.toLong()
     }
 
-    override fun hasStableIds(): Boolean {
-        return false
-    }
+    override fun hasStableIds(): Boolean { return false }
 
     override fun getGroupView(
         groupPosition: Int,
@@ -59,8 +57,7 @@ class ExpandedMenuAdapter(
         var convertView = convertView
         val header = getGroup(groupPosition) as ExpandedMenuModel
         if (convertView == null) {
-            val inflater = mContext
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val inflater = mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = inflater.inflate(R.layout.list_header, null)
         }
 
