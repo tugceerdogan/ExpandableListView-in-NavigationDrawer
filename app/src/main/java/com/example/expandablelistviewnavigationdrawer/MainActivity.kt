@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_firstChild, R.id.nav_secondChild,
-                R.id.nav_thirdChild, R.id.nav_fourthChild,R.id.nav_fifthChild
+                R.id.nav_thirdChild, R.id.nav_fourthChild, R.id.nav_fifthChild
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -82,8 +82,8 @@ class MainActivity : AppCompatActivity() {
 
                             drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
-                                0 ->navController.navigate(R.id.nav_firstChild)
-                                1 ->navController.navigate(R.id.nav_secondChild)
+                                0 -> navController.navigate(R.id.nav_firstChild)
+                                1 -> navController.navigate(R.id.nav_secondChild)
                             }
                             parent.expandGroup(groupPosition)
                         }
