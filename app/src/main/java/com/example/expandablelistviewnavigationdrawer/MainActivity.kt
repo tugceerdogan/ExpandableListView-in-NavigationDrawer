@@ -1,7 +1,9 @@
 package com.example.expandablelistviewnavigationdrawer
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private var viewGroup: View? = null
 
     private val headerList: ArrayList<ExpandedMenuModel> = ArrayList<ExpandedMenuModel>()
     private val childList: HashMap<ExpandedMenuModel, ArrayList<String>> =
@@ -60,39 +64,49 @@ class MainActivity : AppCompatActivity() {
             ExpandedMenuAdapter(this, headerList, childList, expandableListView)
         expandableListView.setAdapter(mMenuAdapter)
 
+        expandableListView.choiceMode = ExpandableListView.CHOICE_MODE_SINGLE
+
         expandableListView.setOnGroupClickListener { parent, _, groupPosition, _ ->
             when (groupPosition) {
-
                 0 -> {
                     if (parent.isGroupExpanded(groupPosition)) {
                         parent.collapseGroup(groupPosition)
                     } else {
                         parent.expandGroup(groupPosition)
-                        parent.setOnChildClickListener { parent, _, groupPosition, childPosition, _ ->
+
+                        parent.setOnChildClickListener { parent, view, groupPosition, childPosition, _ ->
+                            view.isSelected = true
+                            viewGroup?.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                            viewGroup = view
+                            viewGroup?.setBackgroundColor(Color.parseColor("#2ba89c"))
+
                             drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
-                                0 -> navController.navigate(R.id.nav_firstChild)
-                                1 -> navController.navigate(R.id.nav_secondChild)
+                                0 ->navController.navigate(R.id.nav_firstChild)
+                                1 ->navController.navigate(R.id.nav_secondChild)
                             }
-                            // Collapse the expanded list
-                            parent.collapseGroup(groupPosition)
+                            parent.expandGroup(groupPosition)
                         }
                     }
                 }
+
                 1 -> {
                     if (parent.isGroupExpanded(groupPosition)) {
                         parent.collapseGroup(groupPosition)
                     } else {
                         parent.expandGroup(groupPosition)
-                        parent.setOnChildClickListener { parent, _, groupPosition, childPosition, _ ->
+                        parent.setOnChildClickListener { parent, view, groupPosition, childPosition, _ ->
+                            view.isSelected = true;
+                            viewGroup?.setBackgroundColor(Color.parseColor("#FFFFFF"))
+                            viewGroup = view;
+                            viewGroup?.setBackgroundColor(Color.parseColor("#2ba89c"))
                             drawerLayout.closeDrawer(GravityCompat.START)
                             when (childPosition) {
                                 0 -> navController.navigate(R.id.nav_thirdChild)
                                 1 -> navController.navigate(R.id.nav_fourthChild)
                                 2 -> navController.navigate(R.id.nav_fifthChild)
-
                             }
-                            parent.collapseGroup(groupPosition)
+                            parent.expandGroup(groupPosition)
                         }
                     }
                 }
